@@ -29,11 +29,27 @@ class PhotosController < ApplicationController
 
     newpic = Photo.new
 
-    newpic.id 
     newpic.caption = params.fetch("input_caption")
     newpic.image = params.fetch("input_image")
     newpic.owner_id = params.fetch("input_owner_id")
     newpic.save
-    redirect_to("/photos")
+
+    @new_pic = Photo.all.order({ :created_at => :desc }).first
+    redirect_to("/photos/#{@new_pic.id}")
+
+  end
+
+  def edit_photo
+
+    editpic_id = params.fetch("edit_photoid")
+    editpic_matching = Photo.where({ :id => editpic_id})
+
+    editpic = editpic_matching.first
+    editpic.caption = params.fetch("input_caption")
+    editpic.image = params.fetch("input_image")
+    editpic.save
+
+    redirect_to("/photos/#{editpic_id}")
+
   end
 end

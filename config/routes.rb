@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get("/delete_photo/:delete_photoid", {:controller => "photos", :action => "delete_photoid" })
   get("/include_photo", {:controller => "photos", :action => "include_photo" })
+  get("/update_photo/:edit_photoid", {:controller => "photos", :action => "edit_photo" })
+  
 end
