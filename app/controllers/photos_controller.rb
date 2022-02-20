@@ -24,4 +24,16 @@ class PhotosController < ApplicationController
     deleted_photo.destroy
     redirect_to("/photos")
   end
+
+  def include_photo
+
+    newpic = Photo.new
+
+    newpic.id 
+    newpic.caption = params.fetch("input_caption")
+    newpic.image = params.fetch("input_image")
+    newpic.owner_id = params.fetch("input_owner_id")
+    newpic.save
+    redirect_to("/photos")
+  end
 end
