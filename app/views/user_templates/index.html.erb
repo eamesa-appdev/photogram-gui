@@ -1,4 +1,9 @@
 <h1>List of users</h1>
+<form action="/include_user">
+  <label for="input_username">Username</label>
+  <input id="input_username" type="text" name="input_username" placeholder="Enter a username...">
+  <button>Add user</button>
+</form>
 <table border="1">
   <tr>
     <th>ID</th>
@@ -7,13 +12,13 @@
     <%@list_of_users.each do |a_user|%>
       <tr>
         <td>
-        <%= a_user.id%>
+          <%= a_user.id%>
         </td>
         <td>
-        <%= a_user.username%>
+          <%= a_user.username%>
         </td>
         <td>
-        <a href="/users/<%= a_user.username%>">Show details</a>
+          <a href="/users/<%= a_user.username%>">Show details</a>
         </td>
       </tr>
     <%end%>
